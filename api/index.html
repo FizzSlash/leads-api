@@ -1,8 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head><title>Leads API</title></head>
+<head>
+    <title>Multi-Client Leads API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .client { margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .client a { text-decoration: none; color: #0066cc; font-weight: bold; }
+        .client a:hover { text-decoration: underline; }
+    </style>
+</head>
 <body>
-  <h1>Leads API</h1>
-  <p>API available at: <a href="/api/leads">/api/leads</a></p>
+    <h1>Multi-Client Leads API</h1>
+    <p>Available client APIs:</p>
+    
+    <div class="client">
+        <h3>Retention Harbor</h3>
+        <p>API: <a href="/api/retention-harbor">/api/retention-harbor</a></p>
+        <p>Status: Active</p>
+    </div>
+    
+    <div class="client">
+        <h3>Client 2 (Example)</h3>
+        <p>API: <a href="/api/client2">/api/client2</a></p>
+        <p>Status: Coming Soon</p>
+    </div>
+    
+    <div class="client">
+        <h3>Client 3 (Example)</h3>
+        <p>API: <a href="/api/client3">/api/client3</a></p>
+        <p>Status: Coming Soon</p>
+    </div>
+    
+    <hr>
+    <h3>Adding New Clients</h3>
+    <ol>
+        <li>Copy <code>api/template.js</code> to <code>api/[client-name].js</code></li>
+        <li>Update the Supabase URL and API key</li>
+        <li>Push to GitHub - auto-deploys to Vercel</li>
+        <li>API available at <code>/api/[client-name]</code></li>
+    </ol>
 </body>
 </html>
