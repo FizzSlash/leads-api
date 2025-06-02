@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
   try {
     const { data, error } = await supabase
-      .from('lead_email_text')
+      .from('retention_harbor')
       .select('*')
       .order('created_at', { ascending: false });
 
