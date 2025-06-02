@@ -20,17 +20,23 @@ export default async function handler(req, res) {
   }
 
   try {
+    // First try to get data without ordering to test basic access
     const { data, error } = await supabase
       .from('retention_harbor')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('*');
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase error:', error);
+      throw error;
+    }
+
+    // Sort in JavaScript if we got data
+    const sortedData = data ? data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) : [];
 
     return res.status(200).json({
       client: 'retention-harbor',
-      leads: data || [],
-      count: data?.length || 0,
+      leads: sortedData,
+      count: sortedData.length,
       lastUpdated: new Date().toISOString(),
       status: 'success'
     });
